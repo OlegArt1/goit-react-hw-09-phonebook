@@ -1,0 +1,28 @@
+.feedback__title
+{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: rgb(84, 84, 165);
+}
+.feedback__block
+{
+    margin-left: -150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (max-width: 720px)
+{
+    .feedback__title
+    {
+        font-size: 25px;
+    }
+}
+@media screen and (max-width: 480px)
+{
+    .feedback__title
+    {
+        font-size: 20px;
+    }
+}

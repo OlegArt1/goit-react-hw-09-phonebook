@@ -1,0 +1,59 @@
+.feedback__button_block
+{
+    margin: 50px auto;
+    max-width: 500px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.feedback__button
+{
+    margin: 0 5px;
+    padding: 10px 20px;
+    width: 150px;
+    font-size: 20px;
+    cursor: pointer;
+}
+    .feedback__button:hover
+    {
+        border: 1px solid green;
+        background-color: green;
+    }
+    .feedback__button:focus
+    {
+        border: 1px solid red;
+        background-color: red;
+    }
+    .feedback__button:active
+    {
+        border: 1px solid blue;
+        background-color: blue;
+    }
+    .feedback__button:hover, .feedback__button:focus, .feedback__button:active
+    {
+        color: white;
+    }
+@media screen and (max-width: 720px)
+{
+    .feedback__button
+    {
+        padding: 8px 17px;
+        width: 120px;
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 480px)
+{
+    .feedback__button_block
+    {
+        gap: 10px;
+    }
+    .feedback__button
+    {
+        padding: 5px 15px;
+        width: 90px;
+        font-size: 15px;
+    }
+}

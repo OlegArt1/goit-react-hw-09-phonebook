@@ -1,0 +1,21 @@
+.feedback__notification
+{
+    font-weight: 500;
+    font-size: 25px;
+    text-align: center;
+    color: rgb(68, 196, 68);
+}
+@media screen and (max-width: 720px)
+{
+    .feedback__notification
+    {
+        font-size: 22px;
+    }
+}
+@media screen and (max-width: 480px)
+{
+    .feedback__notification
+    {
+        font-size: 18px;
+    }
+}

@@ -1,44 +1,36 @@
-import { useEffect, lazy } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Vortex } from "react-loader-spinner";
-import { Layout } from "./Layout";
-import { GlobalStyle } from "./GlobalStyle";
-import { PrivateRoute } from "./PrivateRoute";
-import { RestrictedRoute } from "./RestrictedRoute";
-import { refreshUser } from "Redux/auth/operations";
+import { fetchContacts } from "redux/operations";
+import { selectError, selectIsLoading } from "redux/selectors";
+import { Layout } from "components/Layout/Layout";
+import { TaskForm } from "components/ContactForm/ContactForm";
+import { ContactList } from "components/ContactList/ContactListItem";
+import { Filter } from "components/Filter/Filter";
+import Css from "./App.module.css";
 
-const Register = lazy(() => import('../pages/Registration/Registration'));
-const Home = lazy(() => import('../pages/Home/Home'));
-const Login = lazy(() => import('../pages/Authorization/Authorization'));
-const ContactList = lazy(() => import('../pages/Contact/Contact'));
+export let name_text = '';
 
 export const App = () =>
 {
     const dispatch = useDispatch();
+  
+    const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
 
     useEffect(() =>
     {
-        dispatch(refreshUser());
+        dispatch(fetchContacts());
   
     }, [dispatch]);
 
-    const { isRefreshing } = useSelector(state => state.auth);
-
-    return !isRefreshing ?
-    <>
-        <Routes>
-            <Route path="/" element={<Layout/>}>
-                <Route index element={<Home/>}/>
-                <Route path="/contacts" element= { <PrivateRoute component={<ContactList/>} redirectTo="/login"/>}/>
-                <Route path="/login" element= {<RestrictedRoute redirectTo="/contacts" component={<Login/>}/>}/>
-                <Route path="/register" element= {<RestrictedRoute redirectTo="/contacts" component={<Register/>}/>}/>
-                <Route path="*" element={<Navigate to="/"/>}/>
-            </Route>
-        </Routes>
-        <GlobalStyle/>
-    </>
-    :
-    <Vortex visible={true} height="80" width="80" ariaLabel="vortex-loading" wrapperStyle={{}}
-            wrapperClass="vortex-wrapper" colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}/>;
+    return (
+        <Layout>
+            <h1 className={Css.title_phonebook}>Phonebook</h1>
+            <TaskForm/>
+            <h1 className={Css.title_contact}>Contacts</h1>
+            <Filter/>
+            {isLoading && !error && <b className={Css.text_error}>Request in progress...</b>}
+            <ContactList/>
+        </Layout>
+    );
 };

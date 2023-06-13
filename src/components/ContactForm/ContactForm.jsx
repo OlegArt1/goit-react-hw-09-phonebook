@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
-import { addContact } from "Redux/contacts/operations";
+import { addContact } from "redux/operations";
+import { Button } from "components/Button/Button";
 import Css from "./ContactForm.module.css";
 
-export const ContactForm = () =>
+export const TaskForm = () =>
 {
     const dispatch = useDispatch();
 
@@ -12,9 +13,7 @@ export const ContactForm = () =>
   
         const form = event.currentTarget;
 
-        const add_contact = { name: event.currentTarget.elements.name.value, number: event.currentTarget.elements.number.value };
-
-        dispatch(addContact(add_contact));
+        dispatch(addContact(event.currentTarget.elements.name.value, { phone_contact: event.currentTarget.elements.number.value }));
 
         form.reset();
     };
@@ -35,7 +34,7 @@ export const ContactForm = () =>
                        placeholder="Enter number" required/>
             </label>
             <p className={Css.form__button_block}>
-                <button className={Css.form__button} type="submit">Add contact</button>
+                <Button className={Css.form__button} type="submit">Add contact</Button>
             </p>
         </form>
     );

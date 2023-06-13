@@ -1,11 +1,3 @@
-.contact
-{
-    margin: 50px auto;
-}
-.contact__title
-{
-    color: darkcyan;
-}
 .title_phonebook
 {
     color: rgb(55, 55, 199);
@@ -18,7 +10,7 @@
 {
     color: rgb(236, 54, 54);
 }
-.contact__title, .title_phonebook, .title_contact, .title_error
+.title_phonebook, .title_contact, .title_error
 {
     margin: 40px auto;
     text-align: center;
@@ -32,7 +24,7 @@
 }
 @media screen and (max-width: 720px)
 {
-    .contact__title, .title_phonebook, .title_contact, .title_error
+    .title_phonebook, .title_contact, .title_error
     {
         font-size: 25px;
     }
@@ -43,7 +35,7 @@
 }
 @media screen and (max-width: 620px)
 {
-    .contact__title, .title_phonebook, .title_contact, .title_error
+    .title_phonebook, .title_contact, .title_error
     {
         font-size: 22px;
     }

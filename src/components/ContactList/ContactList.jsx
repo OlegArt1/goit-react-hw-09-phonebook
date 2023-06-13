@@ -1,45 +1,25 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteContact, fetchContacts } from "Redux/contacts/operations";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "redux/operations";
 import Css from "./ContactList.module.css";
 
-export const ContactListItem = () =>
+export const ContactListItem = ({ contact }) =>
 {
     const dispatch = useDispatch();
-    
-    useEffect(() =>
-    {
-        dispatch(fetchContacts());
 
-    }, [dispatch]);
+    const handleDelete = () => dispatch(deleteContact(contact.id));
 
-    const contacts = useSelector(state => state.contacts.items);
-    const filterData = useSelector(state => state.filter).toLowerCase(); 
-
-    const visibleContacts = contacts.filter(subscriber =>
-        subscriber.name.toLowerCase().includes(filterData)
-    );
     return (
         <>
-            <ul className={Css.contact__list}>
-                {visibleContacts.map(({ id, name, number }) =>
-                (
-                    <li className={Css.contact__item} key={id}>
-                        <div className={Css.contact__block}>
-                            <label className={Css.contact__label}>
-                                <b className={Css.contact__text_name}>Name:</b>
-                                <span className={Css.contact__text_span}>{name};</span>
-                            </label>
-                            <label className={Css.contact__label}>
-                                <b className={Css.contact__text_phone}>Phone:</b>
-                                <span className={Css.contact__text_span}>{number};</span>
-                            </label>
-                        </div>
-                        <button className={Css.contact__button} type="button"
-                                onClick={() => dispatch(deleteContact(id))}>X</button>
-                    </li>
-                ))}
-            </ul>
+            <label className={Css.contact__label}>
+                <b className={Css.contact__text_name}>Name:&nbsp;&nbsp;&nbsp;</b>
+                <span className={Css.contact__text_span}>{contact.name_contact};</span>
+            </label>
+            <label className={Css.contact__label}>
+                <b className={Css.contact__text_name}>Phone:&nbsp;&nbsp;&nbsp;</b>
+                <span className={Css.contact__text_span}>{contact.phone_contact};</span>
+            </label>
+            <button id={contact.id} className={Css.contact__button} type="button" onClick={handleDelete}>X</button>
+            <br/><br/><br/>
         </>
     );
 };

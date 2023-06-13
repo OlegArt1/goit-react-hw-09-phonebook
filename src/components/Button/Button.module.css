@@ -1,0 +1,49 @@
+.btn
+{
+    padding: 8px 12px;
+    display: inline-flex;  
+    font: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    background-color: #e2e5e8;
+    color: inherit;
+}
+    .btn.isSelected
+    {
+        background-color: #1976d2;
+        color: #fff;
+    }
+    .btn:hover, .btn:focus
+    {
+        background-color: #1976d2;
+        color: #fff;
+    }
+    .btn:active
+    {
+        background-color: #1565c0;
+        color: #fff;
+    }
+@media screen and (max-width: 720px)
+{
+    .btn
+    {
+        height: 32px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 420px)
+{
+    .btn
+    {
+        height: 29px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 285px)
+{
+    .btn
+    {
+        height: auto;
+    }
+}
